@@ -20,5 +20,10 @@ export default new Router({
       name:'city',
       component:()=>import("../pages/city/city"),
     },
+    {
+      path:"/msite",
+      name:'msite',
+      component:()=>import("../pages/msite/msite"),
+    }
   ]
 })

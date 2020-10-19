@@ -15,7 +15,7 @@
        </nav>
        <section class="hotcity">
            <h4 class="hotcity_title">热门城市</h4>
-           <ul class="hotcity_tip"><router-link tag="li" :to="{path:'/city/'+item.id}"  v-for="item in hotcity" :key="item.id">
+           <ul class="hotcity_tip"><router-link tag="li"   v-for="item in hotcity" :key="item.id" :to="{path:'/city', params: {cityid:item.id}}">
            {{item.name}}
            </router-link></ul>
        

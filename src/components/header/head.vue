@@ -2,11 +2,13 @@
 <div id="header">
   <slot name="logo"></slot>
   <section >
-    <i class="el-icon-arrow-left" v-if="goback" @click="this.$router.go(-1)"></i>
+    <i class="el-icon-arrow-left" v-if="goback" @click="$router.go(-1)"></i>
   </section>
  <router-link :to="{ path:'/login'}" v-if=signUp><span class="login" >登录/注册</span ></router-link>
  <span class="head_title" v-if=headTitle>{{headTitle}}</span>
  <slot name="changecity"></slot>
+ <slot name="search"></slot>
+ <slot name="msite_title"></slot>
 </div>
 </template>
 
