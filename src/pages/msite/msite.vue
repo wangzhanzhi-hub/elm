@@ -8,10 +8,11 @@
        <span class="site_title"> 南花园</span>
        </router-link>
        </header-top>
-       <nav> 
-           <div v-if="foodType.length"><div>
+       <nav class="swiper-nav"> 
+           <div v-if="foodType.length" >
+               <div class="swiper">
               <div v-for="item in foodType" :key="item.index" class="swiper-slide">  
-                  <router-link :to="{path:'/food'}"  v-for="item1 in item" :key="item1.id" >
+                  <router-link :to="{path:'/food'}"  v-for="item1 in item" :key="item1.id" class="swiper-side-group">
             <figure>
               <img :src="imgurl+item1.image_url" >
               <figcaption>{{item1.title}}</figcaption></figure>
@@ -19,16 +20,28 @@
                </div></div>
                </div>
        </nav>
-       
-       
+    <div class="shop-list">
+        <header >
+            <i class="el-icon-platform-eleme"></i>
+        <span class=shop-header-title>附近商家</span>
+
+
+        </header>
+    
+    </div>
+    <footer-guide> </footer-guide>   
    </div>
 </template>
 
 <script>
 import headerTop from "../../components/header/head"
+import footerGuide from "../../components/footer/footerGuide"
 export default {
     created(){
+   
+
     this.geohash=this.$route.query.geohash;
+ 
       this.$axios.get("https://elm.cangdu.org/v2/index_entry",{params: this.geohash,
 	group_type: '1',
 	'flags[]': 'F'
@@ -57,8 +70,13 @@ export default {
            imgurl:'https://fuss10.elemecdn.com', //图片域名地址
     }},
     components:{
-        headerTop
-    }
+        headerTop,
+        footerGuide
+    },
+    methods:{
+        
+}
+    
 }
 </script>
 
@@ -77,13 +95,54 @@ position: absolute;
     color: #ffffff;
     font-size: .8rem;
 }
+.swiper-nav{
+    border-bottom:.025rem solid #e4e4e4;
+}
+.swiper{
+height: 10.6rem;
+overflow: hidden;
+margin-top:2.1rem;
+padding-bottom: .6rem;
+}
 .swiper-slide{
-    font-size:.65rem;
+       font-size:2px;
+}
+.swiper-side-group{
+ width: 25%;
+    padding: .3rem 0;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
 }
 figure{
        font-size:.65rem;
 }
+figcaption{
+    font-size: .55rem;
+    color: #666;
+    
+}
 figure img{
-   font-size:.65rem;
+   margin-bottom: .3rem;
+    width: 3rem;
+    height:3rem;
+}
+.el-icon-platform-eleme{
+    color:#999;
+    margin-left: .6rem;
+    vertical-align: middle;
+    width: .6rem;
+    height: .6rem;
+}
+.shop-list{
+    margin-top: .4rem;
+    background-color: #fff;
+    border-top: .025rem solid #e4e4e4;
+    font-size:.55rem;
+    
+}
+.shop-header-title{
+    color:#999;
+    vertical-align: middle;
 }
 </style>

@@ -15,8 +15,8 @@
        </nav>
        <section class="hotcity">
            <h4 class="hotcity_title">热门城市</h4>
-           <ul class="hotcity_tip"><router-link tag="li"   v-for="item in hotcity" :key="item.id" :to="{path:'/city', params: {cityid:item.id}}">
-           {{item.name}}
+           <ul ><router-link tag="li"   v-for="item in hotcity" :key="item.id" :to="{path:'/city', params: {cityid:item.id}}">
+           <span>{{item.name}}</span>
            </router-link></ul>
        
        </section>
@@ -25,7 +25,7 @@
 
            <ul>
                <li  class="grouptitle" v-for="(value, key, index) in allcity" :key="key">
-                <h4>{{key}} <span v-if="index==0">(按字母排序)</span></h4>
+                <h4 class="hotcity_title">{{key}} <span v-if="index==0">(按字母排序)</span></h4>
              
                 <ul  class="group-ul">
                    <router-link :to="{path:'/city/'}" v-for="item in value" :key="item.id"
@@ -143,20 +143,18 @@ components:{
 }
 ul{
     list-style: none;
-    
+    border-bottom: .025rem solid #e4e4e4;
 }
-.hotcity_tip{
-overflow:hidden;
-}
+
 li{
     color:#3190e8;
-    float:left;
-    width: calc(25% - .065rem);
-    height: 1.75rem;
+    width: 25%;
+    box-sizing: border-box;
+    
     font-size: .55rem;
-        display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.75rem;
     border-bottom: .025rem solid #e4e4e4;
     border-right: .025rem solid #e4e4e4;
 }
@@ -177,15 +175,16 @@ border-top: 2px solid #e4e4e4;
 .grouptitle{
     width:100%;
 }
+
 .grouptip{
     height:1.75rem;
 }
 .group-ul{
     width:100%;
+    
+    border-bottom: .025rem solid #e4e4e4;
+    margin-bottom: .4rem;
+
 }
-.group{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+
 </style>
